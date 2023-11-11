@@ -117,11 +117,11 @@ void jogo()
             {
                 result = 1;
             }
-            if (tabuleiro[0][x] == 'X' && tabuleiro[1][x] == 'X' && tabuleiro[2][x] == 'X')
+            else if (tabuleiro[0][x] == 'X' && tabuleiro[1][x] == 'X' && tabuleiro[2][x] == 'X')
             {
                 result = 1;
             }
-            if (tabuleiro[0][0] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][2] == 'X' || tabuleiro[0][2] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][0])
+            else if ((tabuleiro[0][0] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][2] == 'X') || (tabuleiro[0][2] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][0] == 'X'))
             {
                 result = 1;
             }
@@ -150,11 +150,11 @@ void jogo()
             {
                 result = 2;
             }
-            if (tabuleiro[0][y] == 'O' && tabuleiro[1][y] == 'O' && tabuleiro[2][y] == 'O')
+            else if (tabuleiro[0][y] == 'O' && tabuleiro[1][y] == 'O' && tabuleiro[2][y] == 'O')
             {
                 result = 2;
             }
-            if (tabuleiro[0][0] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][2] == 'O' || tabuleiro[0][2] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][0])
+            else if (tabuleiro[0][0] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][2] == 'O' || tabuleiro[0][2] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][0] == 'O')
             {
                 result = 2;
             }
