@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-//--------GAME OF SHUMACHER---------
+//--------JOGO DA VELHA---------
 
 int escolhaX()
 {
@@ -167,18 +167,12 @@ void jogo()
     }
 }
 
-/*
-    for(int x = 0; x < 3; x++){
-        int y = 0;
-        for(y; y < 3; y++)
-            tabuleiro[x][y] = '_';
-
-    }
-
-*/
-
 int main()
 {
     jogo();
     return 0;
 }
+
+// By: Mikael Shumacher
+// Version: 1.0
+// Date: 10/11/2023
