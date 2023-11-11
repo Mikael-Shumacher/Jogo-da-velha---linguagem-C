@@ -9,6 +9,7 @@ int escolhaX()
     while(scanf("%d", &posX) != 1){
         printf("\nDigite somente numeros\n");
         while(getchar() != '\n');
+        return escolhaX();
     }
     if (posX < 10 && posX > 0)
     {
@@ -25,7 +26,11 @@ int escolhaO()
 {
     int posO = 0;
     printf("\n\nDigite a posicao do [ O ]: ");
-    scanf("%d", &posO);
+    while(scanf("%d", &posO) != 1){
+        printf("\nDigite somente numeros\n");
+        while(getchar() != '\n');
+        return escolhaO();
+    }
     if (posO < 10 && posO > 0)
     {
         return posO;
