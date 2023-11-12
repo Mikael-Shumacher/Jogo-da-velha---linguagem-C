@@ -5,19 +5,21 @@
 int escolhaX()
 {
     int posX = 0;
-    printf("\n\nDigite a posicao do [ X ]: ");
-    while(scanf("%d", &posX) != 1){
-        printf("\nDigite somente numeros\n");
-        while(getchar() != '\n');
+    printf("\n\n\x1b[32mDigite a posicao do [ X ]: ");
+    while (scanf("%d", &posX) != 1)
+    {
+        printf("\n\x1b[31Digite somente numeros\n");
+        while (getchar() != '\n')
+            ;
         return escolhaX();
     }
-    if (posX < 10 && posX > 0)
+    if (posX > 0 && posX < 10)
     {
         return posX;
     }
     else
     {
-        printf("\nDigite somente as posicoes de 1 a 9\n");
+        printf("\n\x1b[31mDigite somente as posicoes de 1 a 9\n");
         return escolhaX();
     }
 }
@@ -25,10 +27,12 @@ int escolhaX()
 int escolhaO()
 {
     int posO = 0;
-    printf("\n\nDigite a posicao do [ O ]: ");
-    while(scanf("%d", &posO) != 1){
-        printf("\nDigite somente numeros\n");
-        while(getchar() != '\n');
+    printf("\n\n\x1b[33mDigite a posicao do [ O ]: ");
+    while (scanf("%d", &posO) != 1)
+    {
+        printf("\n\x1b[31mDigite somente numeros\n");
+        while (getchar() != '\n')
+            ;
         return escolhaO();
     }
     if (posO < 10 && posO > 0)
@@ -37,7 +41,7 @@ int escolhaO()
     }
     else
     {
-        printf("\nDigite somente as posicoes de 1 a 9\n");
+        printf("\n\x1b[31mDigite somente as posicoes de 1 a 9\n");
         return escolhaO();
     }
 }
@@ -82,40 +86,40 @@ int linha(int pos)
 
 void img_jogo(char a, char b, char c, char d, char e, char f, char g, char h, char i)
 {
-    printf("\n__%c__|__%c__|__%c__", a, b, c);
-    printf("\n__%c__|__%c__|__%c__", d, e, f);
-    printf("\n__%c__|__%c__|__%c__", g, h, i);
-    printf("\n     |     |    \n\n\n");
+    printf("\n\x1b[34m__%c__|__%c__|__%c__", a, b, c);
+    printf("\n\x1b[34m__%c__|__%c__|__%c__", d, e, f);
+    printf("\n\x1b[34m__%c__|__%c__|__%c__", g, h, i);
+    printf("\n\x1b[34m     |     |    \n\n\n");
 }
 
 void jogo()
 {
     char tabuleiro[3][3] = {{'_', '_', '_'}, {'_', '_', '_'}, {'_', '_', '_'}};
     int X[9], O[9];
+    int v = 0;
     int result = 0;
-    printf("\n-----------Jogo da Velha---------\n");
-    printf("\n__1__|__2__|__3__");
-    printf("\n__4__|__5__|__6__");
-    printf("\n__7__|__8__|__9__");
-    printf("\n     |     |    \n");
-    for (int i = 0; i < 9; i++)
+    printf("\n\033[4;37m-----------Jogo da Velha---------\033[0m \n");
+    printf("\n\x1b[34m__1__|__2__|__3__");
+    printf("\n\x1b[34m__4__|__5__|__6__");
+    printf("\n\x1b[34m__7__|__8__|__9__");
+    printf("\n\x1b[34m     |     |    \n\n\n");
+    for (int i = 0; i < 5; i++)
     {
-        if (i == 8)
+        if (v == 5)
         {
-            printf("\n\n\n\nDeu velha [o jogo foi reiniciado]\n\n\n\n");
+            printf("\n\n\n\n\033[4;37mDEU VELHA!!!!!! \033[0m [o jogo foi reiniciado]\n\n\n\n");
             jogo();
         }
         X[i] = escolhaX();
         int L = linha(X[i]);
         int C = coluna(X[i]);
-        int v = X[i];
         if (X[i] != O[i] && tabuleiro[L][C] == '_')
         {
             tabuleiro[L][C] = 'X';
         }
         else
         {
-            printf("\nA posicao que voce deseja jogar ja esta ocupada, tente novamente!\n");
+            printf("\n\x1b[31mA posicao que voce deseja jogar ja esta ocupada, tente novamente!\n");
             return jogo();
         }
         img_jogo(tabuleiro[0][0], tabuleiro[0][1], tabuleiro[0][2], tabuleiro[1][0], tabuleiro[1][1], tabuleiro[1][2], tabuleiro[2][0], tabuleiro[2][1], tabuleiro[2][2]);
@@ -136,7 +140,7 @@ void jogo()
         }
         if (result == 1)
         {
-            printf("\n\n\n\n\n\nO [X] venceu o jogo!!!\n");
+            printf("\n\n\n\n\n\n\033[1;35m||||||||||||---------!!! O [X] venceu o jogo !!!---------||||||||||||\n\n\n\n\n\n");
             return jogo();
         }
         O[i] = escolhaO();
@@ -148,11 +152,11 @@ void jogo()
         }
         else
         {
-            printf("\nA posicao que voce deseja jogar ja esta ocupada, tente novamente!\n");
+            printf("\n\033[1;36mA posicao que voce deseja jogar ja esta ocupada, tente novamente!\n");
             return jogo();
         }
         img_jogo(tabuleiro[0][0], tabuleiro[0][1], tabuleiro[0][2], tabuleiro[1][0], tabuleiro[1][1], tabuleiro[1][2], tabuleiro[2][0], tabuleiro[2][1], tabuleiro[2][2]);
-        for (int y = 0; y < 3; y++)
+        for(int y = 0; y < 3; y++)
         {
             if (tabuleiro[y][0] == 'O' && tabuleiro[y][1] == 'O' && tabuleiro[y][2] == 'O')
             {
@@ -169,9 +173,10 @@ void jogo()
         }
         if (result == 2)
         {
-            printf("\n\n\n\n\n\nO [O] venceu o jogo!!!\n");
+            printf("\n\n\n\n\n\n\033[1;35m||||||||||||---------!!! Bolinha [O] venceu o jogo !!!---------||||||||||||\n\n\n\n\n\n");
             return jogo();
         }
+        v++;
     }
 }
 
@@ -182,5 +187,5 @@ int main()
 }
 
 // By: Mikael Shumacher
-// Version: 1.0
+// Version: 1.3
 // Date: 10/11/2023
